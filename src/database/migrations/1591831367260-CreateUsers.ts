@@ -1,11 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateAppointments1591747132572
-  implements MigrationInterface {
+export default class CreateUsers1591831367260 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'appointments',
+        name: 'users',
         columns: [
           {
             // descrição e detalhes que uma coluna do bando de dados vai ter
@@ -16,15 +15,17 @@ export default class CreateAppointments1591747132572
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'provider',
+            name: 'name',
             type: 'varchar',
-            isNullable: false, // não permite que o campo seja nulo
           },
           {
-            name: 'date',
-            // pega a hora e data atual e aplica também o fuso horário
-            type: 'timestamp with time zone',
-            isNullable: false,
+            name: 'email',
+            type: 'varchar',
+            isUnique: true,
+          },
+          {
+            name: 'password',
+            type: 'varchar',
           },
           {
             name: 'created_at',
@@ -42,6 +43,6 @@ export default class CreateAppointments1591747132572
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('appointments');
+    await queryRunner.dropTable('users');
   }
 }
