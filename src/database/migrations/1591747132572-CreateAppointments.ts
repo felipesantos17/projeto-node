@@ -13,6 +13,7 @@ export default class CreateAppointments1591747132572
             type: 'varchar', // tipo do dado
             isPrimary: true, // se ele é Primary Key PK (Unico)
             generationStrategy: 'uuid',
+            default: 'uuid_generate_v4()',
           },
           {
             name: 'provider',
