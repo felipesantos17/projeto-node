@@ -10,7 +10,7 @@ export default class CreateAppointments1591747132572
           {
             // descrição e detalhes que uma coluna do bando de dados vai ter
             name: 'id', // nome da coluna
-            type: 'varchar', // tipo do dado
+            type: 'uuid', // tipo do dado
             isPrimary: true, // se ele é Primary Key PK (Unico)
             generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
@@ -18,13 +18,13 @@ export default class CreateAppointments1591747132572
           {
             name: 'provider',
             type: 'varchar',
+            // já vem padrao na migration
             isNullable: false, // não permite que o campo seja nulo
           },
           {
             name: 'date',
             // pega a hora e data atual e aplica também o fuso horário
             type: 'timestamp with time zone',
-            isNullable: false,
           },
           {
             name: 'created_at',

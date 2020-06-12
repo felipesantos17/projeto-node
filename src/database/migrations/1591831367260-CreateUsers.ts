@@ -9,7 +9,7 @@ export default class CreateUsers1591831367260 implements MigrationInterface {
           {
             // descrição e detalhes que uma coluna do bando de dados vai ter
             name: 'id', // nome da coluna
-            type: 'varchar', // tipo do dado
+            type: 'uuid', // tipo do dado
             isPrimary: true, // se ele é Primary Key PK (Unico)
             generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
