@@ -1,4 +1,6 @@
 import { getRepository } from 'typeorm';
+import { hash } from 'bcryptjs';
+
 import User from '../models/User';
 
 interface Request {
@@ -19,12 +21,14 @@ class CreateUserService {
       throw new Error('Email address already used.');
     }
 
+    const hashedpassword = await hash(password, 8);
+
     // cria a instancia do objeto mas não salva
     // por isso está sem AWAIT
     const user = usersRepository.create({
       name,
       email,
-      password,
+      password: hashedpassword,
     });
 
     // isso vai salvar o usuário no Banco de Dados
