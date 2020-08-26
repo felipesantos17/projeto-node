@@ -26,7 +26,7 @@ class AuthenticateUserService {
     });
 
     if (!user) {
-      throw new AppErrors('Incorrect email combination.', 401);
+      throw new AppErrors('Incorrect email/password combination.', 401);
     }
 
     // user.password - Senha criptografada
@@ -35,7 +35,7 @@ class AuthenticateUserService {
     const passwordMatched = await compare(password, user.password);
 
     if (!passwordMatched) {
-      throw new AppErrors('Incorrect password combination.', 401);
+      throw new AppErrors('Incorrect email/password combination.', 401);
     }
     // Usuário autenticado
 
